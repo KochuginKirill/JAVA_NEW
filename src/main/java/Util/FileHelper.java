@@ -27,12 +27,10 @@ public class FileHelper {
         } finally {
             System.out.println(line);
         }
-
     }
 
     static void addStringToFile(String pathToFile, String newText){
         Path path = Paths.get(pathToFile);
-
         try {
             Files.write(path, newText.getBytes(), StandardOpenOption.APPEND);
             System.out.println("Successfully written bytes to the file");

@@ -57,32 +57,32 @@ class PhoneBook {
 }
 */
 
-int n =  sortLength;
-        for(int i = n/2 - 1; i>=0;i--)
-        {
-        int l = i * 2 + 1;
-        int r = i * 2 + 2;
-        int largest = i;
-        if(l < n && tree[l] > tree[largest]){
-        largest = l;
-        }
-        if(l < n && tree[r] > tree[largest]){
-        largest = r;
-        }
-        if(i != largest){
-        int temp = tree[i];
-        tree[i] = tree[largest];
-        tree[largest] = temp;
-        }
-        }
-
-        }
-
-
-        int n =  sortLength;
-        for(int i = n-1; i >=0; i--){
-        int temp = sortArray[i];
-        sortArray[i] = sortArray[0];
-        sortArray[0] = temp;
-        buildTree(sortArray);
-        }
+//int n =  sortLength;
+//        for(int i = n/2 - 1; i>=0;i--)
+//        {
+//        int l = i * 2 + 1;
+//        int r = i * 2 + 2;
+//        int largest = i;
+//        if(l < n && tree[l] > tree[largest]){
+//        largest = l;
+//        }
+//        if(l < n && tree[r] > tree[largest]){
+//        largest = r;
+//        }
+//        if(i != largest){
+//        int temp = tree[i];
+//        tree[i] = tree[largest];
+//        tree[largest] = temp;
+//        }
+//        }
+//
+//        }
+//
+//
+//        int n =  sortLength;
+//        for(int i = n-1; i >=0; i--){
+//        int temp = sortArray[i];
+//        sortArray[i] = sortArray[0];
+//        sortArray[0] = temp;
+//        buildTree(sortArray);
+//        }
