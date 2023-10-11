@@ -35,12 +35,22 @@ public class ITOG {
     }
 
     private static void printPhoneBook() {
+        int max = 0;
         for (String name: phoneBook.keySet()) {
-            String key = name.toString();
-            String value = phoneBook.get(name).toString();
-            System.out.println(key + " " + value);
+            if(phoneBook.get(name).size() > max){
+                max = phoneBook.get(name).size();
+            }
         }
-
+        while(max > 0){
+        for (String name: phoneBook.keySet()) {
+            if(phoneBook.get(name).size() == max) {
+                String key = name.toString();
+                String value = phoneBook.get(name).toString();
+                System.out.println(key+" "+value);
+            }
+        }
+            max--;
+        }
     }
 
     public static void main(String[] args) {
