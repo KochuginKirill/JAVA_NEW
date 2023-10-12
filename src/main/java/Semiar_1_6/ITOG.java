@@ -1,4 +1,4 @@
-package DZ_Semiar_6;
+package Semiar_1_6;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;

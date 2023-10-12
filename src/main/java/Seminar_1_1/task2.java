@@ -1,4 +1,4 @@
-package DZ_Seminar_1;
+package Seminar_1_1;
 
 public class task2 {
     public static void printPrimeNums(){

@@ -1,4 +1,4 @@
-package DZ_Seminar_1;
+package Seminar_1_1;
 
 public class task3 {
     public static int calculate(char op, int a, int b) {
