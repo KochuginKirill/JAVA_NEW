@@ -1,7 +1,7 @@
 package OOP_DZ2;
 
 public abstract class AbstractAccount implements Amount {
-    double balance;
+    protected double balance;
 
     public AbstractAccount(double putIn) {
         this.balance = putIn;
