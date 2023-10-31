@@ -18,8 +18,12 @@ public class BtTest {
         tree.add(12);
         tree.add(15);
         tree.add(10);
-
         tree.print();
+        tree.add(252);
+        tree.print();
+        tree.remove(12);
+        tree.print();
+
 
     }
 }
