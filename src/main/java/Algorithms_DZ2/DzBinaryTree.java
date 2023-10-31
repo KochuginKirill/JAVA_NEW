@@ -181,7 +181,7 @@ public class DzBinaryTree<T extends Comparable<T>> {
         int nodeCount = nodeCount(root, 0);
         int width = 50;
         int height = nodeCount * 5;
-        List<List<PrintNode>> list = new ArrayList<List<PrintNode>>();
+        List<List<PrintNode>> list = new ArrayList<>();
         for (int i = 0; i < height; i++)  {
             ArrayList<PrintNode> row = new ArrayList<>();
             for (int j = 0; j < width; j++) {

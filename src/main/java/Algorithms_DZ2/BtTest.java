@@ -1,5 +1,7 @@
 package Algorithms_DZ2;
 
+import org.w3c.dom.Node;
+
 public class BtTest {
     public static void main(String[] args) {
 
@@ -24,7 +26,6 @@ public class BtTest {
         System.out.println(tree.remove(12));
         tree.remove(12);
         System.out.println(tree.remove(12));
-
-
+        Node n = null;
     }
 }
