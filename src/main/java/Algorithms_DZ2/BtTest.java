@@ -21,8 +21,9 @@ public class BtTest {
         tree.print();
         tree.add(252);
         tree.print();
+        System.out.println(tree.remove(12));
         tree.remove(12);
-        tree.print();
+        System.out.println(tree.remove(12));
 
 
     }
