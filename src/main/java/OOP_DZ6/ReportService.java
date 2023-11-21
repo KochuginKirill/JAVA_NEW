@@ -1,6 +1,7 @@
 package OOP_DZ6;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class ReportService {
@@ -11,9 +12,9 @@ public class ReportService {
         suportedTypeList.add(new JsonCreate());
         // добавлять сюда
         SuportedReportsTypes CorrectType = null;
-        for (int i = 0; i < suportedTypeList.size(); i++) {
-            if(suportedTypeList.get(i).getFileType() == reportType.toUpperCase()){
-                CorrectType = suportedTypeList.get(i);
+        for (SuportedReportsTypes suportedReportsTypes : suportedTypeList) {
+            if (Objects.equals(suportedReportsTypes.getFileType(), reportType.toUpperCase())) {
+                CorrectType = suportedReportsTypes;
                 break;
             }
         }
