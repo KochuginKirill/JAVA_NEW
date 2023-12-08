@@ -69,7 +69,7 @@ public class PersonInformation {
                 int day;
                 try {
                     day = Integer.parseInt(fragmentdate[0]);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     e.printStackTrace();
                     System.out.println("День был введен некорректно");
                     System.out.println("Ваш ввод: "+fragmentdate[0]);
@@ -78,7 +78,7 @@ public class PersonInformation {
                 int month;
                 try {
                     month = Integer.parseInt(fragmentdate[1]);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     e.printStackTrace();
                     System.out.println("Месяц был введен некорректно");
                     System.out.println("Ваш ввод: "+fragmentdate[1]);
