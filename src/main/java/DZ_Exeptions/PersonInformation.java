@@ -131,12 +131,12 @@ public class PersonInformation {
             }else{
                 surname =fragmentInput[i];
                 try{
-                    name = fragmentInput[i++];
+                    name = fragmentInput[++i];
                 } catch (ArrayIndexOutOfBoundsException e){
                     throw new ArrayIndexOutOfBoundsException("После фамилии должно идти имя через пробел.");
                 }
                 try{
-                    fatherName = fragmentInput[i++];
+                    fatherName = fragmentInput[++i];
                 } catch (ArrayIndexOutOfBoundsException e){
                     throw new ArrayIndexOutOfBoundsException("После имени должно идти отчество через пробел.");
                 }
