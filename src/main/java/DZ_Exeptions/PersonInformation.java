@@ -12,55 +12,7 @@ import java.util.Scanner;
 public class PersonInformation {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        scanner.useDelimiter("\\n");
-        int userInput;
-        String inputString;
-        String[] userStrings;
-        while(true){
-            System.out.println("____________________________________________");
-            System.out.println("Введите 1 для добавления нового человека \n" +
-                    "и создания отдельно txt файла");
-            System.out.println("Введите 2 для закытия программы");
-            System.out.print("Ввод =>");
-            try {
-                userInput = Integer.parseInt(scanner.next());
-            } catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Вы ввели не целое число");
-                break;
-            }
-            if(userInput != 1 && userInput != 2){
-                System.out.println("Вы ввели число не равное 1 или 2");
-            }
-
-            if(userInput == 1) {
-                System.out.println("_________________________________________________________________");
-                System.out.println("Введите в консоль одной строчкой через пробел, \n"+
-                        "в любом порядке следующие элементы: ");
-                System.out.println("<Фамилия> <Имя> <Отчество> <датаРождения> <номерТелефона> <пол>\n"+
-                        "(Фамилия, имя и отчество вводятся поочередно в том же порядке. \n" +
-                        "В отличии от других элементов)");
-                System.out.println("дата вводится в формате: дд.мм.гггг");
-                System.out.println("телефонные номера вводятся через - (должен быть хотя бы один)");
-                System.out.println("Пол: либо мужской, либо женский");
-                System.out.println();
-                System.out.println("Образец:");
-                System.out.println("25.5.1995 8-821-666-66-66 Иванов Иван Иванович мужской");
-                System.out.println("_________________________________________________________________");
-
-                System.out.print("Введите вашу строку =>");
-                inputString = scanner.next();
-                userStrings = getStringInput(inputString);
-                checkFile(userStrings[0]);
-                addStringToFile(userStrings[0] + ".txt",userStrings[1] +  "\n");
-                break;
-            }
-            if(userInput == 2){
-                break;
-            }
-        }
-
+        addNewPerson();
     }
 
 
@@ -80,7 +32,7 @@ public class PersonInformation {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Данные в файле: " + line);
+            System.out.println("Первая строчка в файле " + line);
         }
     }
 
@@ -135,7 +87,7 @@ public class PersonInformation {
                 int year;
                 try {
                     year = Integer.parseInt(fragmentdate[2]);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     e.printStackTrace();
                     System.out.println("Год был введен некорректно");
                     System.out.println("Ваш ввод: "+fragmentdate[2]);
@@ -171,28 +123,78 @@ public class PersonInformation {
             }else{
                 surname =fragmentInput[i];
                 try{
-                    i++;
+                    name = fragmentInput[i++];
                 } catch (Exception e){
                     e.printStackTrace();
                     throw new RuntimeException("После фамилии должно идти имя через пробел.");
                 }
-                name =fragmentInput[i];
                 try{
-                    i++;
+                    fatherName =fragmentInput[i++];
                 } catch (Exception e){
                     e.printStackTrace();
                     throw new RuntimeException("После имени должно идти отчество через пробел.");
                 }
-                fatherName =fragmentInput[i];
             }
         }
         String[] check = {surname , name , fatherName , date , number , gender};
         for (String s : check) {
             if(s == null){
+                System.out.println("Ваш ввод:" + Arrays.toString(check));
                 throw new RuntimeException("Некорректный ввод, сверьтесь с условием.");
             }
         }
         String[] strings = {surname, Arrays.toString(check)};
         return strings;
+    }
+
+    static void addNewPerson(){
+        Scanner scanner = new Scanner(System.in);
+        scanner.useDelimiter("\\n");
+        int userInput;
+        String inputString;
+        String[] userStrings;
+        while(true){
+            System.out.println("____________________________________________");
+            System.out.println("Введите 1 для добавления нового человека \n" +
+                    "и создания отдельно txt файла");
+            System.out.println("Введите 2 для закытия программы и сохранения данных");
+            System.out.print("Ввод =>");
+            try {
+                userInput = Integer.parseInt(scanner.next());
+            } catch (Exception e){
+                e.printStackTrace();
+                System.out.println("Вы ввели не целое число");
+                break;
+            }
+            if(userInput != 1 && userInput != 2){
+                System.out.println("Вы ввели число не равное 1 или 2");
+            }
+
+            if(userInput == 1) {
+                System.out.println("_________________________________________________________________");
+                System.out.println("Введите в консоль одной строчкой через пробел, \n"+
+                        "в любом порядке следующие элементы: ");
+                System.out.println("<Фамилия> <Имя> <Отчество> <датаРождения> <номерТелефона> <пол>\n"+
+                        "(Фамилия, имя и отчество вводятся поочередно в том же порядке. \n" +
+                        "В отличии от других элементов)");
+                System.out.println("дата вводится в формате: дд.мм.гггг");
+                System.out.println("телефонные номера вводятся через - (должен быть хотя бы один)");
+                System.out.println("Пол: либо мужской, либо женский");
+                System.out.println();
+                System.out.println("Образец:");
+                System.out.println("25.5.1995 8-821-666-66-66 Иванов Иван Иванович мужской");
+                System.out.println("_________________________________________________________________");
+
+                System.out.print("Введите вашу строку =>");
+                inputString = scanner.next();
+                userStrings = getStringInput(inputString);
+                checkFile(userStrings[0]);
+                addStringToFile(userStrings[0] + ".txt",userStrings[1] +  "\n");
+                break;
+            }
+            if(userInput == 2){
+                break;
+            }
+        }
     }
 }
