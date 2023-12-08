@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class PersonInformation {
@@ -48,7 +49,13 @@ public class PersonInformation {
     }
 
     static String[] getStringInput(String input) {
-        String[] fragmentInput = input.split(" ", 6);
+        if(Objects.equals(input, "")){
+            throw new RuntimeException("Вы ничего не ввели");
+        }
+        String[] fragmentInput = input.split(" ");
+        if (fragmentInput.length != 6){
+            throw new RuntimeException("Вы не ввели корректно 6 типов данных, сверьтесь с условием.");
+        }
         String surname = null;
         String name = null;
         String fatherName = null;
@@ -124,15 +131,13 @@ public class PersonInformation {
                 surname =fragmentInput[i];
                 try{
                     name = fragmentInput[i++];
-                } catch (Exception e){
-                    e.printStackTrace();
-                    throw new RuntimeException("После фамилии должно идти имя через пробел.");
+                } catch (ArrayIndexOutOfBoundsException e){
+                    throw new ArrayIndexOutOfBoundsException("После фамилии должно идти имя через пробел.");
                 }
                 try{
-                    fatherName =fragmentInput[i++];
-                } catch (Exception e){
-                    e.printStackTrace();
-                    throw new RuntimeException("После имени должно идти отчество через пробел.");
+                    fatherName = fragmentInput[i++];
+                } catch (ArrayIndexOutOfBoundsException e){
+                    throw new ArrayIndexOutOfBoundsException("После имени должно идти отчество через пробел.");
                 }
             }
         }
