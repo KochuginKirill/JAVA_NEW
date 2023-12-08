@@ -1,45 +1,33 @@
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Random;
-
-import static java.util.Collections.swap;
 
 public class test {
     public static void main(String[] args) {
-        System.out.println(getPrediction());
+        System.out.println(isFloat("1.25"));
     }
 
-    public static String getPrediction(){
-        Random r = new Random();
-        int choice = r.nextInt(8);
-        System.out.println(choice);
-        if(choice == 0){
-            return "Бесспорно";
+    public static float isFloat(String input) {
+        float result = Float.NaN;
+        try{
+            result = Float.parseFloat(input);
+        } catch(Exception e){
+            e.printStackTrace();
         }
-        else if(choice == 1){
-            return "Определённо да";
-        }
-        else if(choice == 2){
-            return "Вероятнее всего";
-        }
-        else if(choice == 3){
-            return "Хорошие перспективы";
-        }
-        else if(choice == 4){
-            return "Спроси позже";
-        }
-        else if(choice == 5){
-            return "Попробуй снова";
-        }
-        else if(choice == 6){
-            return "Мой ответ — нет";
-        }
-        else if(choice == 7){
-            return "Весьма сомнительно";
-        } else{
-            return null;
-        }
-
-
+        return result;
     }
+
+    public static double expr(int[] intArray, int d) {
+        if(intArray.length < 8){
+            System.out.println("У вводного массива отсутствуем элемент с индексом 8");
+            return Double.NaN;
+        }
+        if(d == 0){
+            System.out.println("Деление на ноль невозможно");
+            return Double.NaN;
+        }
+        double result = (double) intArray[8] / d;
+        System.out.println("intArray[8] / d = " + intArray[8] + " / " + d + " = " + result);
+        return result;
+    }
+
+
 }
+
