@@ -128,7 +128,7 @@ public class PersonInformation {
             }else if (fragmentInput[i].equalsIgnoreCase("m") ||
                     fragmentInput[i].equalsIgnoreCase("f")){
                 gender = fragmentInput[i];
-            }else{
+            }else if (surname == null){
                 surname =fragmentInput[i];
                 try{
                     name = fragmentInput[++i];
