@@ -114,7 +114,7 @@ public class PersonInformation {
                     throw new RuntimeException("Incorrect year");
                 }
                 date = fragmentInput[i];
-            }else if(fragmentInput[i].matches("[0-9]+")){
+            }else if(fragmentInput[i].matches("[0-9]+") && number == null){
                 String[] fragmenNumber = fragmentInput[i].split("");
                 for (String s : fragmenNumber) {
                     try{
