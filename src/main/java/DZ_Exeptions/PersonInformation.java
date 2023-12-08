@@ -54,7 +54,8 @@ public class PersonInformation {
         }
         String[] fragmentInput = input.split(" ");
         if (fragmentInput.length != 6){
-            throw new RuntimeException("Вы не ввели корректно 6 типов данных, сверьтесь с условием.");
+            throw new RuntimeException("Вы не ввели корректно 6 типов данных, сверьтесь с условием. \n" +
+                    "Вы ввели:" + fragmentInput.length);
         }
         String surname = null;
         String name = null;
@@ -113,8 +114,8 @@ public class PersonInformation {
                     throw new RuntimeException("Incorrect year");
                 }
                 date = fragmentInput[i];
-            }else if(fragmentInput[i].contains("-")){
-                String[] fragmenNumber = fragmentInput[i].split("-");
+            }else if(fragmentInput[i].matches("[0-9]+")){
+                String[] fragmenNumber = fragmentInput[i].split("");
                 for (String s : fragmenNumber) {
                     try{
                         int test = Integer.parseInt(s);
@@ -124,8 +125,8 @@ public class PersonInformation {
                     }
                     number = fragmentInput[i];
                 }
-            }else if (fragmentInput[i].equalsIgnoreCase("мужской") ||
-                    fragmentInput[i].equalsIgnoreCase("женский")){
+            }else if (fragmentInput[i].equalsIgnoreCase("m") ||
+                    fragmentInput[i].equalsIgnoreCase("f")){
                 gender = fragmentInput[i];
             }else{
                 surname =fragmentInput[i];
@@ -183,11 +184,11 @@ public class PersonInformation {
                         "(Фамилия, имя и отчество вводятся поочередно в том же порядке. \n" +
                         "В отличии от других элементов)");
                 System.out.println("дата вводится в формате: дд.мм.гггг");
-                System.out.println("телефонные номера вводятся через - (должен быть хотя бы один -)");
-                System.out.println("Пол: либо мужской, либо женский");
+                System.out.println("телефонные номера вводятся через слитно");
+                System.out.println("Пол: либо f, либо m");
                 System.out.println();
                 System.out.println("Образец:");
-                System.out.println("25.5.1995 8-821-666-66-66 Иванов Иван Иванович мужской");
+                System.out.println("25.5.1995 88216666666 Иванов Иван Иванович m");
                 System.out.println("_________________________________________________________________");
 
                 System.out.print("Введите вашу строку =>");
