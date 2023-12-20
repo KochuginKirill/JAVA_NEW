@@ -1,4 +1,4 @@
-package Util;
+package DZ_Sertification;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,21 +9,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-class FileHelper {
+class FileAssist {
     static void checkFile(String pathToFile){
-        String line = "empty";
+        String line = "Файл пуст";
         try {
             File file = new File(pathToFile);
             if (file.createNewFile()) {
-                System.out.println("file.created"); }
+                System.out.println("Файл создан"); }
             else {
                 BufferedReader bufReader =
                         new BufferedReader(new FileReader(file));
-                System.out.println("file.existed");
+                System.out.println("Файл уже есть");
                 line = bufReader.readLine();
                 bufReader.close(); }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         } finally {
             System.out.println(line);
         }
@@ -33,15 +33,9 @@ class FileHelper {
         Path path = Paths.get(pathToFile);
         try {
             Files.write(path, newText.getBytes(), StandardOpenOption.APPEND);
-            System.out.println("Successfully written bytes to the file");
+            System.out.println("Запись внесена в файл results");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        checkFile("C:\\Users\\User\\Desktop\\java_new\\java_new\\src\\main\\java\\Util\\test.txt");
-        addStringToFile("C:\\Users\\User\\Desktop\\java_new\\java_new\\src\\main\\java\\Util\\test.txt", "\n 123");
-    }
-
 }
